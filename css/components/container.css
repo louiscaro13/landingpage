@@ -1,0 +1,59 @@
+
+/* Section contenant les cartes */
+.cards-section {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.cards-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+/* Style général pour le conteneur des cartes */
+.cards {
+  display: flex;
+  flex-wrap: wrap; /* Permet à la grille de s'adapter à différentes tailles d'écran */
+  justify-content: center; /* Centrer les cartes dans le conteneur */
+  gap: 20px; /* Espacement entre les cartes */
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* Style pour chaque carte individuelle */
+.card {
+  display: flex; /* Utilisation de Flexbox pour aligner image et texte sur la même ligne */
+  align-items: center; /* Centre verticalement l'image et le texte */
+  justify-content: center; /* Aligne tout à gauche */
+  flex-basis: 250px; /* Largeur de base des cartes */
+  flex-grow: 1; /* Les cartes grandissent pour remplir l'espace disponible */
+  background-color: #E7E7E7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Style pour l'image de chaque carte */
+.card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px; /* Espace entre l'image et le texte */
+}
+
+/* Style pour le texte de chaque carte */
+.card h3 {
+  flex-grow: 1; /* Permet au texte de prendre tout l'espace disponible */
+  font-size: 1.5em;
+  color: #333;
+
+}
+
+/* Effet au survol des cartes */
+.card:hover {
+  transform: scale(1.05); /* Zoom léger au survol */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

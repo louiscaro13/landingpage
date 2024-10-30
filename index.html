@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Jobs Finder</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+
+
+    <div class="banner">
+        <div class="container">
+            <h1>Jobs Finder</h1>
+            <h2>Votre recherche d'emploi, notre priorité !</h2>
+            <a href="#questionnaire" class="btn-blue">Contactez-nous</a>
+        </div>
+    </div>
+    <section class="cards-section">
+      <h2>Nos Agences Partenaires</h2>
+          <div class="cards">
+            <div class="card">
+                <a href="https://www.proman-emploi.fr/">
+                  <img src="images/proman.png" alt="Proman">
+                  <h3>Proman Intérim</h3>
+                </a>  
+            </div>
+            <div class="card">
+                <a href="https://you-interim.com/">
+                  <img src="images/you.jpg" alt="You">
+                  <h3>You Intérim</h3>
+            </div>
+            <div class="card">
+                <a href="https://staffmatch.com/fr/">
+                  <img src="images/staffmatch1.png" alt="StaffMatch">
+                  <h3>StaffMatch</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://domino-rh.com/">
+                  <img src="images/domino.jpg" alt="Domino">
+                  <h3>Domino Intérim</h3>
+                </a>  
+            </div>
+            <div class="card">
+                <a href="https://www.manpower.fr/">
+                  <img src="images/manpower.webp" alt="Manpower">
+                  <h3>Manpower</h3>
+                </a>
+            </div>
+          </div>
+</section>
+
+<div class="questionnaire">
+    <section class="form-section">
+      <h2>Votre Avis Nous Intéresse</h2>
+      <div class="form-container">
+        <form id="questionnaire">
+          <div class="form-group">
+            <label for="title">1. Pourquoi souhaitez-vous rejoindre notre agence ?</label><br>
+            <input type="radio" name="discovery" value="Devenir Intérimaire"> Devenir Intérimaire<br>
+            <input type="radio" name="discovery" value="Travailler aux côtés de notre équipe"> Travailler aux côtés de notre équipe<br>
+            <input type="radio" name="discovery" value="Autre" id="discovery_autre"> Autre (veuillez préciser) : 
+            <input type="text" name="discovery_other" id="discovery_other" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="title">2. Décrivez votre situation professionnelle.</label><br>
+            <input type="checkbox" name="attraction" value="Etudiant"> Etudiant<br>
+            <input type="checkbox" name="attraction" value="En activité"> En activité<br>
+            <input type="checkbox" name="attraction" value="En recherche d'activité sortie d'études"> En recherche d'activité sortie d'études<br>
+            <input type="checkbox" name="attraction" value="En activité avec un contrat qui arrive à terme"> En activité avec un contrat qui arrive à terme<br>
+            <input type="checkbox" name="attraction" value="Bénéficiaire des aides de l'Etat (RSA, chômage, etc...)"> Bénéficiaire des aides de l'Etat (RSA, chômage, etc...)
+          </div>
+
+          <div class="form-group">
+            <label for="title">3. Quelle est votre secteur d'activité de prédilection ?</label><br>
+            <input type="radio" name="products" value="Technologie & Innovation"> Technologie & Innovation<br>
+            <input type="radio" name="products" value="Santé & Bien-Être"> Santé & Bien-Être<br>
+            <input type="radio" name="products" value="Finance & Assurance"> Finance & Assurance<br>
+            <input type="radio" name="products" value="Energie & Environnement"> Energie & Environnement<br>
+            <input type="radio" name="products" value="Commerce & Distribution"> Commerce & Distribution<br>
+          </div>
+
+          <div class="form-group">
+            <label for="title">4. Si votre demande formule un autre besoin, merci de nous en faire part ci-dessous.</label>
+            <textarea name="suggestions" id="suggestions" rows="4" placeholder="Vos suggestions ou demande..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="title">5. Votre email (facultatif) :</label>
+            <input type="email" name="email" id="email" placeholder="Votre adresse email">
+          </div>
+
+          <button type="submit" class="submit-btn">Envoyer le questionnaire</button>
+        </form>
+      </div>
+    </section>
+</div>
+
+    <script>
+        document.querySelectorAll('input[name="discovery"]').forEach(input => {
+    input.addEventListener('change', function() {
+        const otherInput = document.getElementById('discovery_other');
+        if (this.value === 'Autre') {
+            otherInput.disabled = false;
+        } else {
+            otherInput.disabled = true;
+            otherInput.value = ''
+                }
+            });
+        });
+
+        document.getElementById('questionnaire').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            let result = {};
+            formData.forEach((value, key) => {
+                if (!result[key]) {
+                    result[key] = value;
+                } else {
+                    if (!Array.isArray(result[key])) {
+                        result[key] = [result[key]];
+                    }
+                    result[key].push(value);
+                }
+            });
+
+            const emailInput = document.getElementById('email');
+            if (emailInput.value && !emailInput.value.includes('@')) {
+                alert('Veuillez entrer une adresse email valide.');
+                return;
+            }
+
+            console.log(result);
+            alert("Merci d'avoir rempli le questionnaire !");
+            this.reset();
+        });
+
+    </script>
+
+<a href="#top" class="btn-blue scroll-top">Retour en haut</a>
+
+</body>
+</html>
